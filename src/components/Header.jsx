@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
 import { useContext } from "react";
-import Anvil from '../assets/Anvil.webp';
 
 const Header = () => {
     const { isLoggedIn, logout, userEmail } = useContext(AuthContext);
@@ -21,7 +20,7 @@ const Header = () => {
                         <img
                             style={{
                                 maxHeight: "80px", maxWidth: "80px"
-                            }} src={Anvil} alt="AI Character Forge Logo" />
+                            }} src="/assets/Anvil.webp" alt="AI Character Forge Logo" />
                     </Link>
                     <h1
                         style={{
