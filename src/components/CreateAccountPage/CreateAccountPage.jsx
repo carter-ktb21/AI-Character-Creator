@@ -8,6 +8,7 @@ const CreateAccountPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [wasOperationSuccessful, setWasOperationSuccessful] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const { logout, login } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -22,11 +23,12 @@ const CreateAccountPage = () => {
             console.log(response2.data);
             localStorage.setItem("userLoggedIn", email);
             login();
+            setIsLoading(true);
 
             // Wait for a second before navigating
             setTimeout(() => {
                 navigate("/homePage")
-            }, 1000); // 1000 milliseconds = 1 second
+            }, 1000);
         } catch (error) {
             console.error("Error creating user:", error);
         }
@@ -50,6 +52,9 @@ const CreateAccountPage = () => {
             {wasOperationSuccessful &&
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <p>Success!</p>
+                    {isLoading &&
+                        <div className="loader" />
+                    }
                 </div>
             }
         </div>

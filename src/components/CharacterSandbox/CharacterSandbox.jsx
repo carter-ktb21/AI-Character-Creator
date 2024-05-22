@@ -15,6 +15,7 @@ const CharacterSandbox = () => {
     const [generatedText, setGeneratedText] = useState("");
     const [firstResponseGenerated, setFirstResponseGenerated] = useState(false);
     const [sessionId, setSessionId] = useState(null); // State to store sessionId
+    const [isLoading, setIsLoading] = useState(false);
 
 
     // Generate a new session ID when the component mounts
@@ -75,6 +76,7 @@ const CharacterSandbox = () => {
             "(Remember to follow the rules given to you above the character sheet):\n" + prompt;
 
         try {
+            setIsLoading(true);
             const response = await axios.post('https://ai-character-creator-functions.azurewebsites.net/api/GenerateResponse?code=YJ0wNilgSmn7hj5M12wXUAJ9t4yUL-bieKUGHtkHKKKFAzFuNvoopg%3D%3D', { prompt: prompt, fullPrompt: fullPrompt, sessionId: sessionId });
             console.log(response.data.text);
 
@@ -82,6 +84,7 @@ const CharacterSandbox = () => {
             setGeneratedText(response.data.text);
             setPrompt("");
             setFirstResponseGenerated(true);
+            setIsLoading(false);
         } catch (error) {
             console.error('Error generating response:', error);
             setGeneratedText("Error generating response. Please try again.");
@@ -191,6 +194,9 @@ const CharacterSandbox = () => {
                 </div>
                 <div style={{ width: "50%", marginLeft: 0, marginRight: "4%" }}>
                     <h1 className="headers">Generated Response:</h1>
+                    {isLoading &&
+                        <div className="loader" />
+                    }
                     {generatedText && (
                         <p>{generatedText}</p>
                     )}

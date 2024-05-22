@@ -39,7 +39,8 @@ const ViewCharactersPage = () => {
             _id
         };
         try {
-            const response = await axios.post('https://ai-character-creator-functions.azurewebsites.net/api/DeleteCharacter?code=rqUwXvMM87wsMrM8Q_71t5z9uut3YrchVLb9qtluo5DlAzFulpeJRg%3D%3D', characterData).then(window.location.reload())
+            const response = await axios.post('https://ai-character-creator-functions.azurewebsites.net/api/DeleteCharacter?code=rqUwXvMM87wsMrM8Q_71t5z9uut3YrchVLb9qtluo5DlAzFulpeJRg%3D%3D', characterData);
+            window.location.reload();
         } catch (error) {
             console.error("Error deleting character:", error);
         }

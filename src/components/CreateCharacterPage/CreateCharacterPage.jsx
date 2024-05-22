@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "../Header";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateCharacterPage = () => {
     const [characterName, setCharacterName] = useState("");
@@ -10,6 +11,8 @@ const CreateCharacterPage = () => {
     const [equipAttributes, setEquipAttributes] = useState([""]);
     const [backstory, setBackstory] = useState("");
     const [hasCharacterBeenCreated, setHasCharacterBeenCreated] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,6 +40,11 @@ const CreateCharacterPage = () => {
             console.log(response.data);
 
             setHasCharacterBeenCreated(true);
+            setIsLoading(true);
+            // Wait for 3 seconds before navigating
+            setTimeout(() => {
+                navigate("/homePage")
+            }, 3000);
         } catch (error) {
             console.error("Error creating user:", error);
         }
@@ -201,7 +209,10 @@ const CreateCharacterPage = () => {
                     <p>
                         Your character has been created! Go to "View Characters" to play around with them!
                     </p>
-                    </div>
+                    {isLoading &&
+                        <div className="loader" />
+                    }
+                </div>
                 }
             </div>
         </div>
