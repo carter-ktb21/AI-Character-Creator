@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Header from "../Header";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthContext";
 
 const CreateAccountPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [wasOperationSuccessful, setWasOperationSuccessful] = useState(false);
+    const { logout, login } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -15,6 +17,11 @@ const CreateAccountPage = () => {
             const response = await axios.post('https://ai-character-creator-functions.azurewebsites.net/api/CreateUser?code=mdSNxP_Lag3aFW96ghplwrW54f28E7mvXidfi9iq6u-BAzFulYbmoA%3D%3D', { email, password });
             console.log(response.data);
             setWasOperationSuccessful(true);
+
+            const response2 = await axios.post('https://ai-character-creator-functions.azurewebsites.net/api/Login?code=M399_UZSb5Fl1qymEWgKhyLCAtpCLE5PchR1rhnr6bivAzFugoO0GA%3D%3D', { email, password });
+            console.log(response2.data);
+            localStorage.setItem("userLoggedIn", email);
+            login();
 
             // Wait for a second before navigating
             setTimeout(() => {

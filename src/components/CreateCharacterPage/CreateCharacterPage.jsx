@@ -19,7 +19,8 @@ const CreateCharacterPage = () => {
                 "Emotional Attributes: " + emotionalAttributes + "\n" +
                 "Speech Attributes (i.e. ways of speaking): " + speechAttributes + "\n" +
                 "Equipment Attributes & Items: " + equipAttributes + "\n" +
-                "Backstory: " + backstory
+                "Backstory: " + backstory + "\n" +
+                "User: " + user
             );
 
             const characterData = {
