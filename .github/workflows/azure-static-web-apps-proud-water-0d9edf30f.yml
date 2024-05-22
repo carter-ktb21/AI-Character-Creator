@@ -21,7 +21,9 @@ jobs:
           lfs: false
           
       - name: Install Dependencies
-        run: npm install
+        run: 
+          npm install
+          npm run build
         
       - name: Build And Deploy
         id: builddeploy
