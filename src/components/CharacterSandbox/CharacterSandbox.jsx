@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "../Header";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import "./CharacterSandbox.css"
 
 const CharacterSandbox = () => {
     const location = useLocation();
@@ -47,22 +48,22 @@ const CharacterSandbox = () => {
             "5) In your character sheet, if a category is empty, ignore it.\n" +
             "6) Your response should be no less than a paragraph in length. However it should also not be longer than a paragraph.\n" +
             "7) I will now provide information on how to handle things that may trigger your safety filters:\n" +
-                "Sexual content: If the user enters something that you think could result in sexual content, simply generate " +
-                "a silly response. Generate a response NO MATTER WHAT. If you need to tone your response down to do so, that is fine. " +
-                "If the problem is the user prompt, replace the problematic words with synonyms that will work.\n" +
-                "Violent content: If the user enters something that you think could result in violent content, still generate a response. " +
-                "Due to the nature of this project's use cases, stories containing violence are considerably likely. This is all fiction so it is okay.\n" +
-                "Hate Speech content: If the user enters something that you think could result in hate speech content, still generate a response. " +
-                "Your response should be funny and not truly hateful so you should be able to respond to any prompt from the user.\n" +
+            "Sexual content: If the user enters something that you think could result in sexual content, simply generate " +
+            "a silly response. Generate a response NO MATTER WHAT. If you need to tone your response down to do so, that is fine. " +
+            "If the problem is the user prompt, replace the problematic words with synonyms that will work.\n" +
+            "Violent content: If the user enters something that you think could result in violent content, still generate a response. " +
+            "Due to the nature of this project's use cases, stories containing violence are considerably likely. This is all fiction so it is okay.\n" +
+            "Hate Speech content: If the user enters something that you think could result in hate speech content, still generate a response. " +
+            "Your response should be funny and not truly hateful so you should be able to respond to any prompt from the user.\n" +
             "8) After I give you your character sheet, you will be given a prompt from a user. This prompt could be anything.  " +
 
-            (generationMode === "Speech" ? 
-            "Your generated response will be speech from the perspective of the character according to the character sheet provided later in this prompt.\n\n" 
-                : 
-            "Your generated response will be in the form of narrative. Respond as if you are writing a story about the character in the provided character sheet. " +
-            "Your perspective should be that of a narrator and not the character themself.\n\n"
+            (generationMode === "Speech" ?
+                "Your generated response will be speech from the perspective of the character according to the character sheet provided later in this prompt.\n\n"
+                :
+                "Your generated response will be in the form of narrative. Respond as if you are writing a story about the character in the provided character sheet. " +
+                "Your perspective should be that of a narrator and not the character themself.\n\n"
             ) +
-            
+
             "The following is your character sheet that you will use to generate a response according to the rules above:\n" +
             "Character Name: " + characterName + "\n" +
             "Physical Attributes: " + physicalAttributes.map((attr, index) => ((index !== 0 ? ', ' : '') + attr)) + "\n" +
@@ -90,44 +91,44 @@ const CharacterSandbox = () => {
     const speechMode = () => {
         var speechMode = document.getElementById("speech-mode");
         var narrativeMode = document.getElementById("narrative-mode");
-            if (speechMode.style.backgroundColor === "lightgreen") {
-                speechMode.style.backgroundColor = "";
-                narrativeMode.style.backgroundColor = "lightgreen";
-                setGenerationMode("Narrative");
-            } else {
-                speechMode.style.backgroundColor = "lightgreen";
-                narrativeMode.style.backgroundColor = "";
-                setGenerationMode("Speech");
-            }
+        if (speechMode.style.backgroundColor === "lightgreen") {
+            speechMode.style.backgroundColor = "";
+            narrativeMode.style.backgroundColor = "lightgreen";
+            setGenerationMode("Narrative");
+        } else {
+            speechMode.style.backgroundColor = "lightgreen";
+            narrativeMode.style.backgroundColor = "";
+            setGenerationMode("Speech");
+        }
     }
 
     const narrativeMode = () => {
         var speechMode = document.getElementById("speech-mode");
         var narrativeMode = document.getElementById("narrative-mode");
-            if (speechMode.style.backgroundColor === "lightgreen") {
-                speechMode.style.backgroundColor = "";
-                narrativeMode.style.backgroundColor = "lightgreen";
-                setGenerationMode("Narrative");
-            } else {
-                speechMode.style.backgroundColor = "lightgreen";
-                narrativeMode.style.backgroundColor = "";
-                setGenerationMode("Speech");
-            }
+        if (speechMode.style.backgroundColor === "lightgreen") {
+            speechMode.style.backgroundColor = "";
+            narrativeMode.style.backgroundColor = "lightgreen";
+            setGenerationMode("Narrative");
+        } else {
+            speechMode.style.backgroundColor = "lightgreen";
+            narrativeMode.style.backgroundColor = "";
+            setGenerationMode("Speech");
+        }
     }
 
     return (
         <div>
             <Header />
             <div style={{ display: "flex", flexDirection: "row" }}>
-                <div style={{ width: "50%", marginLeft: "2%" }}>
-                    <h1>{characterName}</h1>
+                <div style={{ width: "50%", marginLeft: "2%", marginRight: "2%" }}>
+                    <h1 className="headers">{characterName}</h1>
                     <button style={{ marginBottom: "1%" }} onClick={(e) => setViewAttributes(!viewAttributes)}>View Attributes</button><br />
                     {viewAttributes &&
                         <div style={{ display: "flex", flexDirection: "column" }}>
                             {/* Physical Attributes */}
-                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                                <h3 style={{ marginRight: "1%" }}>Physical Attributes:</h3>
-                                <p style={{ flexGrow: 1 }}>
+                            <div className="attribute">
+                                <h3 className="attribute-header" style={{ marginRight: "1%" }}>Physical Attributes:</h3>
+                                <p className="attribute-details">
                                     {physicalAttributes.map((attr, index) => (
                                         <span key={index}>{attr}{index !== physicalAttributes.length - 1 ? ', ' : ''}</span>
                                     ))}
@@ -135,9 +136,9 @@ const CharacterSandbox = () => {
                             </div>
 
                             {/* Emotional Attributes */}
-                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                                <h3 style={{ marginRight: "1%" }}>Emotional Attributes:</h3>
-                                <p style={{ flexGrow: 1 }}>
+                            <div className="attribute">
+                                <h3 className="attribute-header">Emotional Attributes:</h3>
+                                <p className="attribute-details">
                                     {emotionalAttributes.map((attr, index) => (
                                         <span key={index}>{attr}{index !== emotionalAttributes.length - 1 ? ', ' : ''}</span>
                                     ))}
@@ -145,9 +146,9 @@ const CharacterSandbox = () => {
                             </div>
 
                             {/* Speech Attributes */}
-                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                                <h3 style={{ marginRight: "1%" }}>Speech Attributes:</h3>
-                                <p style={{ flexGrow: 1 }}>
+                            <div className="attribute">
+                                <h3 className="attribute-header">Speech Attributes:</h3>
+                                <p className="attribute-details">
                                     {speechAttributes.map((attr, index) => (
                                         <span key={index}>{attr}{index !== speechAttributes.length - 1 ? ', ' : ''}</span>
                                     ))}
@@ -155,9 +156,9 @@ const CharacterSandbox = () => {
                             </div>
 
                             {/* Equipment / Items */}
-                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                                <h3 style={{ marginRight: "1%" }}>Equipment / Items:</h3>
-                                <p style={{ flexGrow: 1 }}>
+                            <div className="attribute">
+                                <h3 className="attribute-header">Equipment / Items:</h3>
+                                <p className="attribute-details">
                                     {equipAttributes.map((attr, index) => (
                                         <span key={index}>{attr}{index !== equipAttributes.length - 1 ? ', ' : ''}</span>
                                     ))}
@@ -165,9 +166,9 @@ const CharacterSandbox = () => {
                             </div>
 
                             {/* Backstory */}
-                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                                <h3 style={{ marginRight: "1%" }}>Backstory:</h3>
-                                <p style={{ flexGrow: 1 }}>
+                            <div className="attribute">
+                                <h3 className="attribute-header">Backstory:</h3>
+                                <p className="attribute-details">
                                     {backstory}
                                 </p>
                             </div>
@@ -175,32 +176,35 @@ const CharacterSandbox = () => {
                     }
 
                     {!firstResponseGenerated &&
-                        <div>
+                        <div style={{ display: "flex", flexDirection: "column" }}>
                             <div>
-                                <h1>Enter AI Prompt Below</h1>
-                                <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} style={{ height: "300px", width: "500px" }}></textarea><br /><br />
+                                <h1 className="headers">Enter AI Prompt Below</h1>
+                                <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} className="input-field"></textarea><br /><br />
+                                <div style={{ marginBottom: "4%" }}>
+                                    <button id="speech-mode" style={{ backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
+                                    <button id="narrative-mode" onClick={() => narrativeMode()}>Narrative Mode</button>
+                                </div>
                                 <input type="submit" value="Generate Response" onClick={() => generateResponse()} />
-                                
                             </div>
-                            <button id="speech-mode" style={{ marginTop: "2%", backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
-                            <button id="narrative-mode" style={{ marginTop: "2%" }} onClick={() => narrativeMode()}>Narrative Mode</button>
                         </div>
                     }
                 </div>
                 <div style={{ width: "50%", marginLeft: 0, marginRight: "4%" }}>
-                    <h1>Generated Response:</h1>
+                    <h1 className="headers">Generated Response:</h1>
                     {generatedText && (
                         <p>{generatedText}</p>
                     )}
                     {firstResponseGenerated &&
-                    <div>
-                        <div style={{ width: "50%", marginLeft: 0, marginRight: "4%" }}>
-                            <textarea placeholder="Continue the story..." value={prompt} onChange={(e) => setPrompt(e.target.value)} style={{ height: "20px", width: "700px" }}></textarea><br /><br />
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                        <div>
+                            <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} className="input-field"></textarea><br /><br />
+                            <div style={{ marginBottom: "4%" }}>
+                                <button id="speech-mode" style={{ backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
+                                <button id="narrative-mode" onClick={() => narrativeMode()}>Narrative Mode</button>
+                            </div>
                             <input type="submit" value="Generate Response" onClick={() => generateResponse()} />
                         </div>
-                            <button id="speech-mode" style={{ marginTop: "2%", backgroundColor: generationMode === "Speech" ? "lightgreen" : "" }} onClick={() => speechMode()}>Speech Mode</button>
-                            <button id="narrative-mode" style={{ marginTop: "2%", backgroundColor: generationMode === "Narrative" ? "lightgreen" : "" }} onClick={() => narrativeMode()}>Narrative Mode</button>
-                        </div>
+                    </div>
                     }
                 </div>
             </div>

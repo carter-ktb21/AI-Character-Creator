@@ -1,0 +1,43 @@
+@media (min-width: 320px) and (max-width: 999px) {
+    .headers {
+        font-size: 17px;
+    }
+
+    .attribute {
+        display: flex;
+        flex-direction: column;
+    }
+    .attribute-header {
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+    .attribute-details {
+        font-size: 11px;
+        margin-top: 1%;
+    }
+
+    
+
+    
+    .input-field {
+        width: 170px;
+        height: 70px;
+    }
+}
+@media (min-width: 1000px) {
+    .input-field {
+        width: 400px;
+        height: 100px;
+    }
+
+    .attribute {
+        display: flex;
+        flex-direction: column;
+    }
+    .attribute-header {
+        margin-bottom: 0;
+    }
+    .attribute-details {
+        margin-top: 1%;
+    }
+}
