@@ -22,7 +22,7 @@ jobs:
           
       - name: Install Dependencies
         run: 
-          npm install
+          npm install --ignore-scripts
           npm run build
         
       - name: Build And Deploy
