@@ -202,44 +202,48 @@ const ViewCharactersPage = () => {
             {/* Modal to edit character details */}
             <div id="editModal" className="modal-filter">
                 <div className="modal-container">
-                    <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+                    <form onSubmit={handleSubmit} style={{ width: "100%", height: "100%" }}>
+                    <h2 style={{ fontSize: '24px', margin: '5%' }}>Edit Character</h2>
                         {chosenCharacter &&
                             <div className="modal-content">
-                                <h2 style={{ fontSize: '24px', margin: '5%' }}>Edit Character</h2>
                                 <hr className='modal-line'></hr>
                                 <div className="modal-form" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                                    <h3 style={{ fontSize: '18px' }}>
+                                    <h3 className="modal-content-h3">
                                         Character Name: {chosenCharacter.characterName}
                                     </h3>
-                                    <h4 style={{ margin: "auto", marginLeft: "10%", marginRight: "10%", textAlign: "center" }}>For fields with multiple values, separate values with a comma and space (e.g., value1, value2) *Refresh the page to see changes</h4>
+                                    <h4 className="modal-content-h4">For fields with multiple values, separate values with a comma and space (e.g., value1, value2) *Refresh the page to see changes</h4>
                                     {/* Input field for editing character name */}
                                     <label htmlFor="characterName">Character Name:</label>
-                                    <input type="text" id="characterName" name="characterName" value={editedFields.characterName || chosenCharacter.characterName} onChange={(e) => handleChange(e, 'characterName')} />
+                                    <input className="input-label" type="text" id="characterName" name="characterName" value={editedFields.characterName || chosenCharacter.characterName} onChange={(e) => handleChange(e, 'characterName')} />
 
-                                    {/* Example input field for editing physical attributes */}
+                                    {/* Input field for editing physical attributes */}
                                     <label htmlFor="physicalAttributes">Physical Attributes:</label>
                                     <input type="text" id="physicalAttributes" name="physicalAttributes" value={Array.isArray(editedFields.physicalAttributes) ? editedFields.physicalAttributes.join(', ') : editedFields.physicalAttributes || ''} onChange={(e) => handleChange(e, 'physicalAttributes')} />
 
-                                    {/* Example input field for editing emotional attributes */}
+                                    {/* Input field for editing emotional attributes */}
                                     <label htmlFor="emotionalAttributes">Emotional Attributes:</label>
                                     <input type="text" id="emotionalAttributes" name="emotionalAttributes" value={Array.isArray(editedFields.emotionalAttributes) ? editedFields.emotionalAttributes.join(', ') : editedFields.emotionalAttributes || ''} onChange={(e) => handleChange(e, 'emotionalAttributes')} />
 
-                                    {/* Example input field for editing speech attributes */}
+                                    {/* Input field for editing speech attributes */}
                                     <label htmlFor="speechAttributes">Speech Attributes:</label>
                                     <input type="text" id="speechAttributes" name="speechAttributes" value={Array.isArray(editedFields.speechAttributes) ? editedFields.speechAttributes.join(', ') : editedFields.speechAttributes || ''} onChange={(e) => handleChange(e, 'speechAttributes')} />
 
-                                    {/* Example input field for editing equipment and items */}
+                                    {/* Input field for editing equipment and items */}
                                     <label htmlFor="equipAttributes">Equipment & Items:</label>
                                     <input type="text" id="equipAttributes" name="equipAttributes" value={Array.isArray(editedFields.equipAttributes) ? editedFields.equipAttributes.join(', ') : editedFields.equipAttributes || ''} onChange={(e) => handleChange(e, 'equipAttributes')} />
 
-                                    {/* Example input field for editing backstory */}
+                                    {/* Input field for editing backstory */}
+                                    <div className="backstory-input">
                                     <label htmlFor="backstory">Backstory:</label>
                                     <textarea id="backstory" name="backstory" value={editedFields.backstory || ''} onChange={(e) => handleChange(e, 'backstory')} />
-                                    <br/>
-                                    <input type="submit" value="Save Changes" />
+                                    </div>
                                 </div>
                             </div>
                         }
+                        <hr className='modal-line'></hr>
+                        <div className="save-button">
+                            <input type="submit" value="Save Changes" />
+                        </div>
                     </form>
                 </div>
             </div>
