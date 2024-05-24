@@ -40,7 +40,7 @@ const SignInPage = () => {
                         <input value={email} placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)}></input><br />
                         <label>Password</label>
                         <input type="password" value={password} placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}></input><br />
-                        <input type="submit" />
+                        <input style={{ padding: "3%" }} type="submit" />
                     </form>
                 </div>
             }
