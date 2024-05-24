@@ -63,6 +63,34 @@ input[type="text"] {
     padding-left: 3%;
 }
 
+/* Close button styling */
+.close-button {
+    background: none;
+    border: none;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    margin-right: 2%;
+    box-shadow: none !important;
+}
+
+.close-button:hover {
+    color: #ff0000;
+    /* Change color on hover */
+}
+
+button {
+    background-color: #dbdae0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px black;
+    cursor: pointer;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+}
+
 @media (min-width: 999px) {
     .modal-container {
         display: flex;
@@ -178,6 +206,13 @@ input[type="text"] {
         width: 420px;
         height: 150px;
     }
+
+    button {
+        padding-left: 1.5%;
+        padding-right: 1.5%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
 }
 
 @media (min-width: 415px) and (max-width: 650px) {
@@ -232,6 +267,13 @@ input[type="text"] {
     #backstory {
         width: 260px;
         height: 150px;
+    }
+
+    button {
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-top: 1.5%;
+        padding-bottom: 1.5%;
     }
 }
 
@@ -289,5 +331,12 @@ input[type="text"] {
         width: 170px;
         height: 175px;
         font-size: 12px;
+    }
+
+    button {
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        padding-top: 2%;
+        padding-bottom: 2%;
     }
 }

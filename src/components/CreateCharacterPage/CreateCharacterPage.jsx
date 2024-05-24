@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "../Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import './CreateCharacterPage.css';
 
 const CreateCharacterPage = () => {
     const [characterName, setCharacterName] = useState("");
@@ -115,16 +116,16 @@ const CreateCharacterPage = () => {
             <Header />
             <div>
                 {!hasCharacterBeenCreated &&
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <div className="form-container">
                         <br />
-                        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                        <form onSubmit={handleSubmit} className="form-container">
                             <label>Character Name</label>
                             <input value={characterName} placeholder="Enter character name" onChange={(e) => setCharacterName(e.target.value)}></input><br />
 
                             {/* Physical Attributes */}
                             <label>Physical Attributes</label>
                             {physicalAttributes.map((attribute, index) => (
-                                <div key={index}>
+                                <div className="form-group" key={index}>
                                     <input
                                         value={attribute}
                                         placeholder="Enter physical attribute"
@@ -143,7 +144,7 @@ const CreateCharacterPage = () => {
                             {/* Emotional Attributes */}
                             <label>Emotional Attributes</label>
                             {emotionalAttributes.map((attribute, index) => (
-                                <div key={index}>
+                                <div className="form-group" key={index}>
                                     <input
                                         value={attribute}
                                         placeholder="Enter emotional attribute"
@@ -162,7 +163,7 @@ const CreateCharacterPage = () => {
                             {/* Speech Attributes */}
                             <label>Speech Attributes (i.e. ways of speaking)</label>
                             {speechAttributes.map((attribute, index) => (
-                                <div key={index}>
+                                <div className="form-group" key={index}>
                                     <input
                                         value={attribute}
                                         placeholder="Enter speech attribute"
@@ -181,10 +182,10 @@ const CreateCharacterPage = () => {
                             {/* Equipment Attributes & Items */}
                             <label>Equipment & Items</label>
                             {equipAttributes.map((attribute, index) => (
-                                <div key={index}>
+                                <div className="form-group" key={index}>
                                     <input
                                         value={attribute}
-                                        placeholder="Enter equipment attribute or item"
+                                        placeholder="Enter equipment attribute"
                                         onChange={(e) => handleEquipAttributeChange(index, e.target.value)}
                                     />
                                     {index > 0 && (

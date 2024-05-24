@@ -35,7 +35,12 @@ const Header = () => {
                             className="user-profile"
                         >
                             <p>User: {userEmail}</p>
-                            <button onClick={logout}>Logout</button>
+                            <button
+                                onClick={logout}
+                                style={{ paddingLeft: "5%", paddingRight: "5%", paddingTop: "2%", paddingBottom: "2%" }}
+                            >
+                                Logout
+                            </button>
 
                         </div>
                     )}

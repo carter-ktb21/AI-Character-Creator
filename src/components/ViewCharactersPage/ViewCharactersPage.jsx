@@ -70,6 +70,15 @@ const ViewCharactersPage = () => {
         }
     }
 
+    const closeModal = async () => {
+        var modal = document.getElementById("editModal");
+        if (modal) {
+            modal.style.display = modal.style.display === "block" ? "none" : "block";
+        }
+        setChosenCharacter();
+        setEditedFields({});
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -125,7 +134,7 @@ const ViewCharactersPage = () => {
                         {characters.length > 0 ? (
                             characters.map((character) => (
                                 <li key={character._id}>
-                                    <div style={{ marginBottom: "5%" }}>
+                                    <div style={{ marginBottom: "5%", maxWidth: "75%" }}>
                                         {/* Name */}
                                         {character.characterName === "" ? (
                                             <h3>Unnamed Character</h3>
@@ -188,7 +197,7 @@ const ViewCharactersPage = () => {
                                             <p>Backstory: {character.backstory}</p>
                                         )}
 
-                                        <button onClick={() => handleDelete(character.characterName, character._id)}>Delete</button>
+                                        <button style={{ backgroundColor: "red", border: "none", color: "white" }} onClick={() => handleDelete(character.characterName, character._id)}>Delete</button>
                                     </div>
                                 </li>
                             ))
@@ -203,7 +212,10 @@ const ViewCharactersPage = () => {
             <div id="editModal" className="modal-filter">
                 <div className="modal-container">
                     <form onSubmit={handleSubmit} style={{ width: "100%", height: "100%" }}>
-                    <h2 style={{ fontSize: '24px', margin: '5%' }}>Edit Character</h2>
+                        <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+                            <h2 style={{ fontSize: '24px', margin: '5%' }}>Edit Character</h2>
+                            <button type="button" style={{ marginLeft: "auto" }} className="close-button" onClick={()=> closeModal()}>×</button>
+                        </div>
                         {chosenCharacter &&
                             <div className="modal-content">
                                 <hr className='modal-line'></hr>
@@ -234,8 +246,8 @@ const ViewCharactersPage = () => {
 
                                     {/* Input field for editing backstory */}
                                     <div className="backstory-input">
-                                    <label htmlFor="backstory">Backstory:</label>
-                                    <textarea id="backstory" name="backstory" value={editedFields.backstory || ''} onChange={(e) => handleChange(e, 'backstory')} />
+                                        <label htmlFor="backstory">Backstory:</label>
+                                        <textarea id="backstory" name="backstory" value={editedFields.backstory || ''} onChange={(e) => handleChange(e, 'backstory')} />
                                     </div>
                                 </div>
                             </div>

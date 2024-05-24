@@ -1,0 +1,49 @@
+button {
+    margin-top: 2%;
+}
+
+button:hover {
+    background-color: #c1c0c7;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input {
+    border-radius: 5px;
+    padding-left: 2%;
+}
+
+input[type="submit"] {
+    margin-bottom: 5%;
+    border-radius: 10px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-group div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+input[type="text"], textarea {
+    width: 80%;
+    margin-bottom: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
