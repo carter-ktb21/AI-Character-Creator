@@ -12,6 +12,7 @@ const CharacterSandbox = () => {
     const [viewAttributes, setViewAttributes] = useState(false);
     const [generationMode, setGenerationMode] = useState("Speech");
     const [prompt, setPrompt] = useState("");
+    const [characterLimit, setCharacterLimit] = useState(500);
     const [generatedText, setGeneratedText] = useState("");
     const [firstResponseGenerated, setFirstResponseGenerated] = useState(false);
     const [sessionId, setSessionId] = useState(null); // State to store sessionId
@@ -47,7 +48,7 @@ const CharacterSandbox = () => {
             "align with your given character sheet. For example, don't include a generic \"Sure, I can help you with that:\" or references to the user as \"user\".\n" +
             "4) Your character exists within the world of Dungeons and Dragons.\n" +
             "5) In your character sheet, if a category is empty, ignore it.\n" +
-            "6) Your response should be no less than a paragraph in length. However it should also not be longer than a paragraph.\n" +
+            "6) Your response should be NO MORE than " + {characterLimit} + " characters.\n" +
             "7) I will now provide information on how to handle things that may trigger your safety filters:\n" +
             "Sexual content: If the user enters something that you think could result in sexual content, simply generate " +
             "a silly response. Generate a response NO MATTER WHAT. If you need to tone your response down to do so, that is fine. " +
@@ -183,9 +184,16 @@ const CharacterSandbox = () => {
                             <div>
                                 <h1 className="headers">Enter AI Prompt Below</h1>
                                 <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} className="input-field"></textarea><br /><br />
-                                <div style={{ marginBottom: "4%" }}>
-                                    <button id="speech-mode" style={{ backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
-                                    <button id="narrative-mode" onClick={() => narrativeMode()}>Narrative Mode</button>
+                                <div>
+                                    <div style={{ marginBottom: "4%" }}>
+                                        <button id="speech-mode" style={{ backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
+                                        <button id="narrative-mode" onClick={() => narrativeMode()}>Narrative Mode</button>
+                                    </div>
+                                    <label>Character Limit of Response</label>
+                                    <div style={{ display: "flex", flexDirection: "row", marginBottom: "3%" }}>
+                                        <input type="range" min={100} max={1000} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)} />
+                                        <input type="number" style={{ marginLeft: "3%", width: "10%", textAlign: "center", height: "100%", lineHeight: "normal" }} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)}></input>
+                                    </div>
                                 </div>
                                 <input type="submit" value="Generate Response" onClick={() => generateResponse()} />
                             </div>
@@ -202,15 +210,22 @@ const CharacterSandbox = () => {
                     )}
                     {firstResponseGenerated &&
                         <div style={{ display: "flex", flexDirection: "column" }}>
-                        <div>
-                            <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} className="input-field"></textarea><br /><br />
-                            <div style={{ marginBottom: "4%" }}>
-                                <button id="speech-mode" style={{ backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
-                                <button id="narrative-mode" onClick={() => narrativeMode()}>Narrative Mode</button>
+                            <div>
+                                <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} className="input-field"></textarea><br /><br />
+                                <div>
+                                <div style={{ marginBottom: "4%" }}>
+                                    <button id="speech-mode" style={{ backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
+                                    <button id="narrative-mode" onClick={() => narrativeMode()}>Narrative Mode</button>
+                                </div>
+                                <label>Character Limit of Response</label>
+                                    <div style={{ display: "flex", flexDirection: "row", marginBottom: "3%" }}>
+                                        <input type="range" min={100} max={1000} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)} />
+                                        <input type="number" style={{ marginLeft: "3%", width: "10%", textAlign: "center", height: "100%", lineHeight: "normal" }} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)}></input>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Generate Response" onClick={() => generateResponse()} />
                             </div>
-                            <input type="submit" value="Generate Response" onClick={() => generateResponse()} />
                         </div>
-                    </div>
                     }
                 </div>
             </div>
