@@ -125,10 +125,10 @@ const ViewCharactersPage = () => {
     return (
         <div>
             <Header />
-            <div style={{ marginLeft: "2%" }}>
-                <h2>Characters:</h2>
+            <div style={{ marginLeft: "2%", fontFamily: "contentFont" }}>
+                <h2 style={{ fontFamily: "headerFont", marginBottom: "1%" }}>Characters:</h2>
                 {loading ? (
-                    <p>Loading...</p>
+                    <p style={{ fontFamily: "headerFont" }}>Loading...</p>
                 ) : (
                     <ul>
                         {characters.length > 0 ? (
@@ -140,13 +140,15 @@ const ViewCharactersPage = () => {
                                             <h3>Unnamed Character</h3>
                                         ) : (
                                             <div>
-                                                <h3>
+                                                <h3 style={{ marginBottom: "1%", fontFamily: "headerFont" }}>
                                                     Name: "{character.characterName}"
-                                                    <button onClick={() => handleEdit(character.characterName, character._id)} style={{ marginLeft: "1%" }}>Edit</button>
                                                 </h3>
+                                                <div>
+                                                <button onClick={() => handleEdit(character.characterName, character._id)} style={{ marginLeft: "0", marginRight: "2%", fontFamily: "headerFont", fontWeight: "bold" }}>Edit</button>
                                                 <Link to="/characterSandbox" state={{ character }}>
-                                                    <button>Character Sandbox</button>
+                                                    <button style={{ fontFamily: "headerFont", fontWeight: "bold" }}>Character Sandbox</button>
                                                 </Link>
+                                                </div>
                                             </div>
                                         )}
 
@@ -197,7 +199,7 @@ const ViewCharactersPage = () => {
                                             <p>Backstory: {character.backstory}</p>
                                         )}
 
-                                        <button style={{ backgroundColor: "red", border: "none", color: "white" }} onClick={() => handleDelete(character.characterName, character._id)}>Delete</button>
+                                        <button style={{ backgroundColor: "red", border: "none", color: "white", fontFamily: "headerFont", fontWeight: "bold" }} onClick={() => handleDelete(character.characterName, character._id)}>Delete</button>
                                     </div>
                                 </li>
                             ))
@@ -213,7 +215,7 @@ const ViewCharactersPage = () => {
                 <div className="modal-container">
                     <form onSubmit={handleSubmit} style={{ width: "100%", height: "100%" }}>
                         <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-                            <h2 style={{ fontSize: '24px', margin: '5%' }}>Edit Character</h2>
+                            <h2 style={{ fontFamily: "headerFont", fontSize: '24px', margin: '5%' }}>Edit Character</h2>
                             <button type="button" style={{ marginLeft: "auto" }} className="close-button" onClick={()=> closeModal()}>×</button>
                         </div>
                         {chosenCharacter &&
@@ -226,35 +228,35 @@ const ViewCharactersPage = () => {
                                     <h4 className="modal-content-h4">For fields with multiple values, separate values with a comma and space (e.g., value1, value2) *Refresh the page to see changes</h4>
                                     {/* Input field for editing character name */}
                                     <label htmlFor="characterName">Character Name:</label>
-                                    <input className="input-label" type="text" id="characterName" name="characterName" value={editedFields.characterName || chosenCharacter.characterName} onChange={(e) => handleChange(e, 'characterName')} />
+                                    <input style={{ fontFamily: "contentFont" }} type="text" id="characterName" name="characterName" value={editedFields.characterName || chosenCharacter.characterName} onChange={(e) => handleChange(e, 'characterName')} />
 
                                     {/* Input field for editing physical attributes */}
                                     <label htmlFor="physicalAttributes">Physical Attributes:</label>
-                                    <input type="text" id="physicalAttributes" name="physicalAttributes" value={Array.isArray(editedFields.physicalAttributes) ? editedFields.physicalAttributes.join(', ') : editedFields.physicalAttributes || ''} onChange={(e) => handleChange(e, 'physicalAttributes')} />
+                                    <input style={{ fontFamily: "contentFont" }} type="text" id="physicalAttributes" name="physicalAttributes" value={Array.isArray(editedFields.physicalAttributes) ? editedFields.physicalAttributes.join(', ') : editedFields.physicalAttributes || ''} onChange={(e) => handleChange(e, 'physicalAttributes')} />
 
                                     {/* Input field for editing emotional attributes */}
                                     <label htmlFor="emotionalAttributes">Emotional Attributes:</label>
-                                    <input type="text" id="emotionalAttributes" name="emotionalAttributes" value={Array.isArray(editedFields.emotionalAttributes) ? editedFields.emotionalAttributes.join(', ') : editedFields.emotionalAttributes || ''} onChange={(e) => handleChange(e, 'emotionalAttributes')} />
+                                    <input style={{ fontFamily: "contentFont" }} type="text" id="emotionalAttributes" name="emotionalAttributes" value={Array.isArray(editedFields.emotionalAttributes) ? editedFields.emotionalAttributes.join(', ') : editedFields.emotionalAttributes || ''} onChange={(e) => handleChange(e, 'emotionalAttributes')} />
 
                                     {/* Input field for editing speech attributes */}
                                     <label htmlFor="speechAttributes">Speech Attributes:</label>
-                                    <input type="text" id="speechAttributes" name="speechAttributes" value={Array.isArray(editedFields.speechAttributes) ? editedFields.speechAttributes.join(', ') : editedFields.speechAttributes || ''} onChange={(e) => handleChange(e, 'speechAttributes')} />
+                                    <input style={{ fontFamily: "contentFont" }} type="text" id="speechAttributes" name="speechAttributes" value={Array.isArray(editedFields.speechAttributes) ? editedFields.speechAttributes.join(', ') : editedFields.speechAttributes || ''} onChange={(e) => handleChange(e, 'speechAttributes')} />
 
                                     {/* Input field for editing equipment and items */}
                                     <label htmlFor="equipAttributes">Equipment & Items:</label>
-                                    <input type="text" id="equipAttributes" name="equipAttributes" value={Array.isArray(editedFields.equipAttributes) ? editedFields.equipAttributes.join(', ') : editedFields.equipAttributes || ''} onChange={(e) => handleChange(e, 'equipAttributes')} />
+                                    <input style={{ fontFamily: "contentFont" }} type="text" id="equipAttributes" name="equipAttributes" value={Array.isArray(editedFields.equipAttributes) ? editedFields.equipAttributes.join(', ') : editedFields.equipAttributes || ''} onChange={(e) => handleChange(e, 'equipAttributes')} />
 
                                     {/* Input field for editing backstory */}
                                     <div className="backstory-input">
                                         <label htmlFor="backstory">Backstory:</label>
-                                        <textarea id="backstory" name="backstory" value={editedFields.backstory || ''} onChange={(e) => handleChange(e, 'backstory')} />
+                                        <textarea style={{ fontFamily: "contentFont" }} id="backstory" name="backstory" value={editedFields.backstory || ''} onChange={(e) => handleChange(e, 'backstory')} />
                                     </div>
                                 </div>
                             </div>
                         }
                         <hr className='modal-line'></hr>
                         <div className="save-button">
-                            <input type="submit" value="Save Changes" />
+                            <input style={{ boxShadow: "2px 2px 2px black", cursor: "pointer", fontFamily: "headerFont" }} type="submit" value="Save Changes" />
                         </div>
                     </form>
                 </div>

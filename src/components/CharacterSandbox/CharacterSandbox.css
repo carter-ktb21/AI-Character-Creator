@@ -5,6 +5,7 @@ input[type="submit"] {
 @media (min-width: 320px) and (max-width: 999px) {
     .headers {
         font-size: 17px;
+        font-family: headerFont;
     }
 
     .attribute {
@@ -14,24 +15,29 @@ input[type="submit"] {
     .attribute-header {
         font-size: 12px;
         margin-bottom: 0;
+        font-family: headerFont;
     }
     .attribute-details {
         font-size: 11px;
         margin-top: 1%;
+        font-family: contentFont;
     }
 
-    
-
-    
     .input-field {
         width: 170px;
         height: 70px;
+        font-family: contentFont;
     }
 }
 @media (min-width: 1000px) {
+    .headers {
+        font-family: headerFont;
+    }
+
     .input-field {
         width: 400px;
         height: 100px;
+        font-family: contentFont;
     }
 
     .attribute {
@@ -40,8 +46,10 @@ input[type="submit"] {
     }
     .attribute-header {
         margin-bottom: 0;
+        font-family: headerFont;
     }
     .attribute-details {
         margin-top: 1%;
+        font-family: contentFont;
     }
 }

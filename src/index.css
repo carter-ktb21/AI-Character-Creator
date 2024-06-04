@@ -13,6 +13,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: contentFont;
+  src: url(/Oxanium/Oxanium-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: headerFont;
+  src: url(/Trispace-VariableFont_wdth,wght.ttf);
+}
+
 body {
   max-width: 100%;
   margin: auto;
@@ -25,9 +35,17 @@ body {
     max-width: 60px;
   }
 
+  .home-logo {
+    max-height: 60px;
+    max-width: 60px;
+  }
+
   .header-font {
-    font-size: 10px;
+    margin-top: 0;
+    font-size: 11px;
     text-align: center;
+    font-family: headerFont;
+    text-shadow: 1px 2px 2px black;
   }
 
   .user-profile {
@@ -47,9 +65,17 @@ body {
     max-width: 80px;
   }
 
+  .home-logo {
+    max-height: 70px;
+    max-width: 70px;
+  }
+
   .header-font {
+    margin-top: 0;
     font-size: 13px;
     text-align: center;
+    font-family: headerFont;
+    text-shadow: 1px 2px 2px black;
   }
 
   .user-profile {

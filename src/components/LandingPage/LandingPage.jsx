@@ -12,7 +12,7 @@ const LandingPage = () => {
                 <Link to={"/signIn"} style={{ margin: "7%", height: "7rem", width: "25rem" }}>
                     <button
                         style={{
-                            height: "7rem", width: "25rem"
+                            height: "7rem", width: "25rem", fontFamily: "headerFont", fontSize: "30px"
                         }}>
                         Sign In
                     </button>
@@ -21,7 +21,7 @@ const LandingPage = () => {
                 <Link to={"/createAccount"} style={{ height: "7rem", width: "25rem" }}>
                     <button
                         style={{
-                            height: "7rem", width: "25rem"
+                            height: "7rem", width: "25rem", fontFamily: "headerFont", fontSize: "30px"
                         }}>
                         Create Account
                     </button>

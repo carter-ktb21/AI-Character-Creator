@@ -42,16 +42,16 @@ const CreateAccountPage = () => {
                     <br />
                     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                         <label>Email</label>
-                        <input value={email} placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)}></input><br />
+                        <input style={{ fontFamily: "contentFont" }} value={email} placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)}></input><br />
                         <label>Create Password</label>
-                        <input type="password" value={password} placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}></input><br />
-                        <input style={{ padding: "3%" }} type="submit" />
+                        <input style={{ fontFamily: "contentFont" }} type="password" value={password} placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}></input><br />
+                        <input style={{ fontFamily: "headerFont", padding: "3%" }} type="submit" />
                     </form>
                 </div>
             }
             {wasOperationSuccessful &&
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <p>Success!</p>
+                    <p style={{ fontFamily: "headerFont" }}>Success!</p>
                     {isLoading &&
                         <div className="loader" />
                     }

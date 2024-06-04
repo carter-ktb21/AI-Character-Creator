@@ -126,7 +126,7 @@ const CharacterSandbox = () => {
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <div style={{ width: "50%", marginLeft: "2%", marginRight: "2%" }}>
                     <h1 className="headers">{characterName}</h1>
-                    <button style={{ marginBottom: "1%" }} onClick={(e) => setViewAttributes(!viewAttributes)}>View Attributes</button><br />
+                    <button style={{ fontFamily: "headerFont", marginBottom: "1%" }} onClick={(e) => setViewAttributes(!viewAttributes)}>View Attributes</button><br />
                     {viewAttributes &&
                         <div style={{ display: "flex", flexDirection: "column" }}>
                             {/* Physical Attributes */}
@@ -186,27 +186,27 @@ const CharacterSandbox = () => {
                                 <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} className="input-field"></textarea><br /><br />
                                 <div>
                                     <div style={{ marginBottom: "4%" }}>
-                                        <button id="speech-mode" style={{ backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
-                                        <button id="narrative-mode" onClick={() => narrativeMode()}>Narrative Mode</button>
+                                        <button id="speech-mode" style={{ fontFamily: "headerFont", backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
+                                        <button id="narrative-mode" style={{ fontFamily: "headerFont" }} onClick={() => narrativeMode()}>Narrative Mode</button>
                                     </div>
                                     <label>Character Limit of Response</label>
                                     <div style={{ display: "flex", flexDirection: "row", marginBottom: "3%" }}>
                                         <input type="range" min={100} max={1000} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)} />
-                                        <input type="number" style={{ marginLeft: "3%", width: "10%", textAlign: "center", height: "100%", lineHeight: "normal" }} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)}></input>
+                                        <input type="number" style={{ fontFamily: "headerFont", marginLeft: "3%", width: "10%", textAlign: "center", height: "100%", lineHeight: "normal" }} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)}></input>
                                     </div>
                                 </div>
-                                <input type="submit" value="Generate Response" onClick={() => generateResponse()} />
+                                <input style={{ boxShadow: "2px 2px 2px black", cursor: "pointer", fontFamily: "headerFont" }} type="submit" value="Generate Response" onClick={() => generateResponse()} />
                             </div>
                         </div>
                     }
                 </div>
                 <div style={{ width: "50%", marginLeft: 0, marginRight: "4%" }}>
-                    <h1 className="headers">Generated Response:</h1>
+                    <h1 style={{ fontFamily: "headerFont" }} className="headers">Generated Response:</h1>
                     {isLoading &&
                         <div className="loader" />
                     }
                     {generatedText && (
-                        <p>{generatedText}</p>
+                        <p style={{ fontFamily: "contentFont" }}>{generatedText}</p>
                     )}
                     {firstResponseGenerated &&
                         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -214,16 +214,16 @@ const CharacterSandbox = () => {
                                 <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} className="input-field"></textarea><br /><br />
                                 <div>
                                 <div style={{ marginBottom: "4%" }}>
-                                    <button id="speech-mode" style={{ backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
-                                    <button id="narrative-mode" onClick={() => narrativeMode()}>Narrative Mode</button>
+                                    <button id="speech-mode" style={{ fontFamily: "headerFont", backgroundColor: "lightgreen" }} onClick={() => speechMode()}>Speech Mode</button>
+                                    <button id="narrative-mode" style={{ fontFamily: "headerFont" }} onClick={() => narrativeMode()}>Narrative Mode</button>
                                 </div>
                                 <label>Character Limit of Response</label>
                                     <div style={{ display: "flex", flexDirection: "row", marginBottom: "3%" }}>
                                         <input type="range" min={100} max={1000} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)} />
-                                        <input type="number" style={{ marginLeft: "3%", width: "10%", textAlign: "center", height: "100%", lineHeight: "normal" }} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)}></input>
+                                        <input type="number" style={{ fontFamily: "headerFont", marginLeft: "3%", width: "10%", textAlign: "center", height: "100%", lineHeight: "normal" }} value={characterLimit} onChange={(e) => setCharacterLimit(e.target.value)}></input>
                                     </div>
                                 </div>
-                                <input type="submit" value="Generate Response" onClick={() => generateResponse()} />
+                                <input style={{ boxShadow: "2px 2px 2px black", cursor: "pointer", fontFamily: "headerFont" }} type="submit" value="Generate Response" onClick={() => generateResponse()} />
                             </div>
                         </div>
                     }
