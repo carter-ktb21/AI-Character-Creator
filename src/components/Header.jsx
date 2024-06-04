@@ -13,16 +13,17 @@ const Header = () => {
                 }}
             >
                 <div style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%" }}>
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", marginLeft: "1.5%"}}>
                     <div
                         style={{
-                            display: "flex", flexDirection: "column", alignItems: "center", height: "100%", paddingLeft: ".5%", paddingRight: "1%"
+                            display: "flex", flexDirection: "column", alignItems: "center", height: "100%", paddingLeft: ".5%", paddingRight: "10%"
                         }}>
                         <img
                             className="header-logo"
                             src="/assets/Anvil.webp" alt="AI Character Forge Logo"
                             style={{ marginBottom: "0.5rem" }}
                         />
-                        <h1 className="header-font" style={{ margin: 0 }}>
+                        <h1 className="header-font">
                             AI Character Forge
                         </h1>
                     </div>
@@ -34,14 +35,15 @@ const Header = () => {
                                 style={{ marginBottom: "0.5rem" }}
                             />
                         </Link>
-                        <label className="header-font" style={{ fontFamily: "headerFont", margin: 0 }}>Home Page</label>
+                        <label className="header-font">Home Page</label>
+                    </div>
                     </div>
                     {isLoggedIn ? (
                         <div
                             className="user-profile"
                             style={{ alignItems: "flex-end", width: "100%" }}
                         >
-                            <p style={{ fontFamily: "headerFont", textShadow: "2px 2px 2px black" }}>User: {userEmail}</p>
+                            <p style={{ fontFamily: "headerFont", textShadow: "2px 2px 2px black", textAlign: "right" }}>User: {userEmail}</p>
                             <button
                                 onClick={logout}
                                 style={{ paddingLeft: "5%", paddingRight: "5%", paddingTop: "2%", paddingBottom: "2%", fontFamily: "headerFont", fontWeight: "bold" }}
